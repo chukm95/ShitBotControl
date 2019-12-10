@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShitBotControl.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace ShitBotControl
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frm_connecting());
+            Application.Run(new frm_Connecting());
         }
     }
 }

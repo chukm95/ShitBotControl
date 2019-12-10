@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ShitBotControl
+namespace ShitBotControl.Views
 {
-    public partial class frm_connecting : Form
+    public partial class frm_Connecting : Form
     {
-        public frm_connecting()
+        public frm_Connecting()
         {
             InitializeComponent();
         }
