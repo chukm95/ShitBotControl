@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29102.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShitBotControl", "ShitBotControl\ShitBotControl.csproj", "{FBF919F9-62EF-4725-B087-77A465771806}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FBF919F9-62EF-4725-B087-77A465771806}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBF919F9-62EF-4725-B087-77A465771806}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBF919F9-62EF-4725-B087-77A465771806}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBF919F9-62EF-4725-B087-77A465771806}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D229A88F-4BF2-497C-B005-3FFB17C6FF17}
+	EndGlobalSection
+EndGlobal
