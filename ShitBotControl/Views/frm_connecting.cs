@@ -16,5 +16,20 @@ namespace ShitBotControl.Views
         {
             InitializeComponent();
         }
+
+        private void frm_Connecting_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_cancel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_connect_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
