@@ -15,6 +15,9 @@ namespace test
             {
                 case 0:
                     return new TestMessage();
+                case 1000:  //ping
+
+                    return null;
                 default:
                     return null;
             }

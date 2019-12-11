@@ -16,12 +16,10 @@ namespace test
         static async void Test()
         {
             TestService ts = new TestService();
-            await ts.TryConnect("127.0.0.1", 8988);
+            await ts.TryConnect("127.0.0.1", 12345);
             Console.WriteLine("Connect ok");
-            while (true)
-            {
-                
-            }
+            //ts.SendMessage(new TestOutMessage());
+            Console.ReadKey();
         }
     }
 }

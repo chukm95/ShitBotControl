@@ -49,6 +49,7 @@ namespace NetCode
         {
             ID = id;
             MessageType = type;
+            FlagDataChanged();
         }
 
         //gives a streamable byte array
@@ -59,6 +60,8 @@ namespace NetCode
             {
                 //create temporary byte list
                 byteArray = new List<byte>();
+                //add id bytes
+                WriteShort(ID);
                 //redefine our data
                 ToBytes();
                 //save our data
@@ -79,7 +82,7 @@ namespace NetCode
         protected void WriteLong(long value)
         {
             //convert the long to bytes and put each byte in the bytearray
-            foreach (byte b in BitConverter.GetBytes(value))
+            foreach (byte b in BitConverter.GetBytes(value).Reverse())
             {
                 byteArray.Add(b);
             }
@@ -89,7 +92,7 @@ namespace NetCode
         protected void WriteInt(int value)
         {
             //convert the int to bytes and put each byte in the bytearray
-            foreach (byte b in BitConverter.GetBytes(value))
+            foreach (byte b in BitConverter.GetBytes(value).Reverse())
             {
                 byteArray.Add(b);
             }
@@ -99,7 +102,7 @@ namespace NetCode
         protected void WriteShort(short value)
         {
             //convert the short to bytes and put each byte in the bytearray
-            foreach (byte b in BitConverter.GetBytes(value))
+            foreach (byte b in BitConverter.GetBytes(value).Reverse())
             {
                 byteArray.Add(b);
             }
@@ -109,7 +112,7 @@ namespace NetCode
         protected void WriteFloat(float value)
         {
             //convert the float to bytes and put each byte in the bytearray
-            foreach (byte b in BitConverter.GetBytes(value))
+            foreach (byte b in BitConverter.GetBytes(value).Reverse())
             {
                 byteArray.Add(b);
             }
@@ -119,7 +122,7 @@ namespace NetCode
         protected void WriteDouble(double value)
         {
             //convert the double to bytes and put each byte in the bytearray
-            foreach (byte b in BitConverter.GetBytes(value))
+            foreach (byte b in BitConverter.GetBytes(value).Reverse())
             {
                 byteArray.Add(b);
             }
@@ -132,7 +135,7 @@ namespace NetCode
             byte[] data = System.Text.Encoding.UTF8.GetBytes(value);
 
             //convert ourt string size to bytes
-            foreach(byte b in BitConverter.GetBytes(data.Length))
+            foreach(byte b in BitConverter.GetBytes(data.Length).Reverse())
             {
                 byteArray.Add(b);
             }

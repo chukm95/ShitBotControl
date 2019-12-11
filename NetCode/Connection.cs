@@ -76,24 +76,31 @@ namespace NetCode
         //the loop where we check for incoming or outgoing messages
         private async Task Loop()
         {
-            //while running check messages
-            while(await IsRunning())
+            try
             {
-                //lock that shit
-                await semalock.WaitAsync();
+                //while running check messages
+                while (await IsRunning())
+                {
+                    //lock that shit
+                    await semalock.WaitAsync();
 
-                //if we are connected
-                if (client != null)
-                { 
-                    CheckIncomingMessages();
-                    messageService.SendMessages();
+                    //if we are connected
+                    if (client != null)
+                    {
+                        CheckIncomingMessages();
+                        messageService.SendMessages();
+                    }
+
+                    //release
+                    semalock.Release();
+
+                    //wait a millisecond
+                    await Task.Delay(1);
                 }
-
-                //release
-                semalock.Release();
-
-                //wait a millisecond
-                await Task.Delay(1);
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine("shit");
             }
 
             //if we stopped running
@@ -103,9 +110,11 @@ namespace NetCode
 
         private void CheckIncomingMessages()
         {
+            NetworkStream nws = client.GetStream();
             //check if we have incoming messages
             if (client.GetStream().DataAvailable)
             {
+                
                 messageService.ReadMessage(client.GetStream());
             }
         }

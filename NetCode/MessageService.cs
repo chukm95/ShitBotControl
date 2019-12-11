@@ -51,7 +51,9 @@ namespace NetCode
             short id = BitConverter.ToInt16(buffer.Reverse().ToArray(), 0);
 
             Message message = SortMessage(id);
-            message.ReadMessage(stream);
+
+            if(message != null)
+                message.ReadMessage(stream);
 
             //check if the message doesnt equal null
             if(message != null)

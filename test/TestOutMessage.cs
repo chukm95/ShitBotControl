@@ -9,13 +9,13 @@ namespace test
 {
     class TestOutMessage : Message
     {
-        public long longval;
-        public int intval;
-        public short shortval;
-        public float floatval;
-        public double doubleval;
-        public string utf8val;
-        public byte byteval;
+        public long longval = 1001;
+        public int intval = 1002;
+        public short shortval = 1003;
+        public float floatval = 1004.4f;
+        public double doubleval = 1005.5;
+        public string utf8val = "testmsg3!";
+        public byte byteval = 58;
 
         public TestOutMessage() : base(1, MessageTypes.OUTGOING)
         {
