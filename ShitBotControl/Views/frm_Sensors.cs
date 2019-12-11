@@ -31,6 +31,8 @@ namespace ShitBotControl.Views
 
         private bool lf_Left = false, lf_Middle = false, lf_Right = false;
 
+        private float motorLeft = 100, motorRight = 100;
+
         private Random rand;
 
         public frm_Sensors()
@@ -104,6 +106,8 @@ namespace ShitBotControl.Views
             graphics.DrawString("L", font, solidBrush, 26, 146);
             graphics.DrawString("M", font, solidBrush, 86, 146);
             graphics.DrawString("R", font, solidBrush, 146, 146);
+
+            //motors
 
             //set the picturebox image to rendersurface
             pbx_rendersurface.Image = rendersurface;
