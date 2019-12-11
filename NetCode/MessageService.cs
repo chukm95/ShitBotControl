@@ -53,24 +53,49 @@ namespace NetCode
             Message message = SortMessage(id);
             message.ReadMessage(stream);
 
-            messageInQueue.Enqueue(message);
+            //check if the message doesnt equal null
+            if(message != null)
+                messageInQueue.Enqueue(message);
         }
 
+        //add a message to the send queue
         public void SendMessage(Message message)
         {
+            //check if the message is outgoing
             if (message.MessageType != Message.MessageTypes.OUTGOING)
+                //if the message is not outgoing throw a exception
                 throw new Exception("message needs to be outgoing!");
 
+            //check if the message doesnt equal to null
             if(message != null)
+                //if the message is equal to null 
                 messageOutQueue.Enqueue(message);
+        }
+
+        //let the connection dequeue and send messages
+        internal void SendMessages()
+        {
+            //while we have messages
+            while(messageOutQueue.Count > 0)
+            {
+                //temporary message
+                Message m;
+                //check if we can deque a message
+                if (messageOutQueue.TryDequeue(out m))
+                {
+                    //message dequed send it!
+                    connection.SendMessage(m);
+                }
+
+            }
         }
 
         public void Poll()
         {
-            while(messageOutQueue.Count > 0)
+            while(messageInQueue.Count > 0)
             {
                 Message m;
-                if(messageOutQueue.TryDequeue(out m))
+                if(messageInQueue.TryDequeue(out m))
                 {
                     OnPoll(m);
                 }
@@ -79,6 +104,9 @@ namespace NetCode
 
         protected abstract void OnPoll(Message m);
 
-
+        public void Stop()
+        {
+            connection.StopRunning();
+        }
     }
 }

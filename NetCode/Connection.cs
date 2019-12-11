@@ -86,7 +86,7 @@ namespace NetCode
                 if (client != null)
                 { 
                     CheckIncomingMessages();
-                    SendOutgoingMessages();
+                    messageService.SendMessages();
                 }
 
                 //release
@@ -110,9 +110,10 @@ namespace NetCode
             }
         }
 
-        private void SendOutgoingMessages()
+        internal void SendMessage(Message message)
         {
-
+            byte[] data = message.ConvertToByteArray();
+            client.GetStream().Write(data, 0, data.Length);
         }
 
         private async Task<bool> IsRunning()
@@ -127,6 +128,16 @@ namespace NetCode
             semalock.Release();
             //return the value
             return currentValue;
+        }
+
+        public async Task StopRunning()
+        {
+            //lock that shit up
+            await semalock.WaitAsync();
+            //set isrunning to false
+            isRunning = false;
+            //unlock that shit
+            semalock.Release();            
         }
 
     }

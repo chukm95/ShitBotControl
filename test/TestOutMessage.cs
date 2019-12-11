@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace test
 {
-    class TestMessage : Message
+    class TestOutMessage : Message
     {
         public long longval;
         public int intval;
@@ -17,24 +17,25 @@ namespace test
         public string utf8val;
         public byte byteval;
 
-        public TestMessage() : base(0, MessageTypes.INCOMING)
+        public TestOutMessage() : base(1, MessageTypes.OUTGOING)
         {
 
         }
 
         protected override void FromBytes()
         {
-            longval = ReadLong();
-            intval = ReadInt();
-            shortval = ReadShort();
-            floatval = ReadFloat();
-            doubleval = ReadDouble();
-            utf8val = ReadUtf();
-            byteval = ReadByte();
+            
         }
 
         protected override void ToBytes()
         {
+            WriteLong(longval);
+            WriteInt(intval);
+            WriteShort(shortval);
+            WriteFloat(floatval);
+            WriteDouble(doubleval);
+            WriteString(utf8val);
+            WriteByte(byteval);
         }
 
         public void Print()

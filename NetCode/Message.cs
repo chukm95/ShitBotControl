@@ -41,6 +41,8 @@ namespace NetCode
 
         //the temporary client holder trough wich we read our messages
         private NetworkStream stream;
+        //the temporary byte array
+        private List<byte> byteArray;
 
         //constructor set the message id and message type of parent class
         protected Message(short id, MessageTypes type)
@@ -55,17 +57,98 @@ namespace NetCode
             //if our data changed
             if (hasChanged)
             {
+                //create temporary byte list
+                byteArray = new List<byte>();
                 //redefine our data
-                data = ToBytes();
+                ToBytes();
+                //save our data
+                data = byteArray.ToArray();
                 //now its uptodate
                 hasChanged = false;
+                //clear list
+                byteArray = null;
             }
             //then return our data
             return data;
         }
 
         //implementation for turning message in sendable bytes
-        protected abstract byte[] ToBytes();
+        protected abstract void ToBytes();
+
+        //writes long to our byte buffer
+        protected void WriteLong(long value)
+        {
+            //convert the long to bytes and put each byte in the bytearray
+            foreach (byte b in BitConverter.GetBytes(value))
+            {
+                byteArray.Add(b);
+            }
+        }
+
+        //writes int to our byte buffer
+        protected void WriteInt(int value)
+        {
+            //convert the int to bytes and put each byte in the bytearray
+            foreach (byte b in BitConverter.GetBytes(value))
+            {
+                byteArray.Add(b);
+            }
+        }
+
+        //writes short to our byte buffer
+        protected void WriteShort(short value)
+        {
+            //convert the short to bytes and put each byte in the bytearray
+            foreach (byte b in BitConverter.GetBytes(value))
+            {
+                byteArray.Add(b);
+            }
+        }
+
+        //writes float to our byte buffer
+        protected void WriteFloat(float value)
+        {
+            //convert the float to bytes and put each byte in the bytearray
+            foreach (byte b in BitConverter.GetBytes(value))
+            {
+                byteArray.Add(b);
+            }
+        }
+
+        //writes double to our byte buffer
+        protected void WriteDouble(double value)
+        {
+            //convert the double to bytes and put each byte in the bytearray
+            foreach (byte b in BitConverter.GetBytes(value))
+            {
+                byteArray.Add(b);
+            }
+        }
+
+        //writes string to our byte buffer
+        protected void WriteString(string value)
+        {
+            //convert our string to byte array
+            byte[] data = System.Text.Encoding.UTF8.GetBytes(value);
+
+            //convert ourt string size to bytes
+            foreach(byte b in BitConverter.GetBytes(data.Length))
+            {
+                byteArray.Add(b);
+            }
+
+            //convert the string to bytes and put each byte in the bytearray
+            foreach (byte b in data)
+            {
+                byteArray.Add(b);
+            }
+        }
+
+        //write byte to our byte buffer
+        protected void WriteByte(byte value)
+        {
+            byteArray.Add(value);
+        }
 
         //we can only start reading the message internal this keeps access to the stream from client
         internal void ReadMessage(NetworkStream stream)
