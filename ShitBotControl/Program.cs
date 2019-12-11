@@ -17,7 +17,7 @@ namespace ShitBotControl
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frm_Connecting());
+            Application.Run(new frm_MainView());
         }
     }
 }
