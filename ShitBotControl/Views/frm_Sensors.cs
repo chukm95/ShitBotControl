@@ -31,7 +31,8 @@ namespace ShitBotControl.Views
 
         private bool lf_Left = false, lf_Middle = false, lf_Right = false;
 
-        private float motorLeft = 100, motorRight = 100;
+        private float motorLeft = 50, motorRight = 100;
+        private float moterpercentage = 692f / 200f;
 
         private Random rand;
 
@@ -78,7 +79,7 @@ namespace ShitBotControl.Views
             solidBrush.Color = Color.Red;
             graphics.FillRectangle(solidBrush, new Rectangle(24, 49, (int)(ultrasoon * UltrasoonPerscentage), 32));
             solidBrush.Color = Color.White;
-            graphics.DrawString(String.Format("{0}", (int)ultrasoon), font, solidBrush, 320, 50);
+            graphics.DrawString(String.Format("{0}", (int)ultrasoon), font, solidBrush, 350, 50);
 
             //linefollowers
             solidBrush.Color = Color.Black;
@@ -107,7 +108,29 @@ namespace ShitBotControl.Views
             graphics.DrawString("M", font, solidBrush, 86, 146);
             graphics.DrawString("R", font, solidBrush, 146, 146);
 
-            //motors
+            //motor left
+            solidBrush.Color = Color.Black;
+            graphics.DrawString("Motors left: ", font, solidBrush, 20, 200);
+            graphics.FillRectangle(solidBrush, new Rectangle(24,230,700,40));
+            pen.Color = Color.Red;
+            graphics.DrawRectangle(pen, new Rectangle(24, 230, 700, 40));
+            solidBrush.Color = Color.Red;
+            graphics.FillRectangle(solidBrush, new Rectangle(28, 234, (int)(motorLeft * moterpercentage), 32));
+            solidBrush.Color = Color.White;
+            graphics.DrawString(String.Format("{0}", (int)motorLeft), font, solidBrush, 350, 235);
+
+            //motor right
+            solidBrush.Color = Color.Black;
+            graphics.DrawString("Motors right: ", font, solidBrush, 20, 280);
+            graphics.FillRectangle(solidBrush, new Rectangle(24, 320, 700, 40));
+            pen.Color = Color.Red;
+            graphics.DrawRectangle(pen, new Rectangle(24, 320, 700, 40));
+            solidBrush.Color = Color.Red;
+            graphics.FillRectangle(solidBrush, new Rectangle(28, 324, (int)(motorRight * moterpercentage), 32));
+            solidBrush.Color = Color.White;
+            graphics.DrawString(String.Format("{0}", (int)motorRight), font, solidBrush, 350, 325);
+
+
 
             //set the picturebox image to rendersurface
             pbx_rendersurface.Image = rendersurface;
