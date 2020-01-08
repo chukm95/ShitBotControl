@@ -12,6 +12,8 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -36,6 +38,38 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MonoGame.Framework, Version=3.7.1.189, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Desktop\Orthus.Editor\bin\Debug\MonoGame.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Desktop\Orthus.Editor\bin\Debug\SharpDX.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.Direct2D1, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Desktop\Orthus.Editor\bin\Debug\SharpDX.Direct2D1.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.Direct3D11, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Desktop\Orthus.Editor\bin\Debug\SharpDX.Direct3D11.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.DXGI, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Desktop\Orthus.Editor\bin\Debug\SharpDX.DXGI.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.MediaFoundation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Desktop\Orthus.Editor\bin\Debug\SharpDX.MediaFoundation.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.XAudio2, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Desktop\Orthus.Editor\bin\Debug\SharpDX.XAudio2.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.XInput, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Desktop\Orthus.Editor\bin\Debug\SharpDX.XInput.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -49,8 +83,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\cnt_Connecting.cs" />
+    <Compile Include="Controllers\cnt_Move.cs" />
+    <Compile Include="Controllers\cnt_Route.cs" />
+    <Compile Include="Controllers\cnt_Sensors.cs" />
+    <Compile Include="Controllers\Controller.cs" />
+    <Compile Include="EditorComponents\EditorScene.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EditorComponents\GraphicsDeviceControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EditorComponents\GraphicsDeviceService.cs" />
+    <Compile Include="EditorComponents\ServiceContainer.cs" />
+    <Compile Include="Models\Intersection.cs" />
+    <Compile Include="Models\Map.cs" />
+    <Compile Include="PathFinding\Node.cs" />
+    <Compile Include="PathFinding\PathFinding.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShittyNetCode\Messages\MessagesIn.cs" />
+    <Compile Include="ShittyNetCode\Messages\MessagesOut.cs" />
+    <Compile Include="ShittyNetCode\Messages\Msg_In_Complete.cs" />
+    <Compile Include="ShittyNetCode\Messages\Msg_In_SensorData.cs" />
+    <Compile Include="ShittyNetCode\Messages\Msg_In_Timeout.cs" />
+    <Compile Include="ShittyNetCode\Messages\Msg_Out_InfiniteEight.cs" />
+    <Compile Include="ShittyNetCode\Messages\Msg_Out_Rotate.cs" />
+    <Compile Include="ShittyNetCode\Messages\Msg_Out_Right.cs" />
+    <Compile Include="ShittyNetCode\Messages\Msg_Out_Left.cs" />
+    <Compile Include="ShittyNetCode\Messages\Msg_Out_Forward.cs" />
+    <Compile Include="ShittyNetCode\Messages\Msg_Out_SensorDataRequest.cs" />
+    <Compile Include="ShittyNetCode\ShittyNetClient.cs" />
+    <Compile Include="ShittyNetCode\ShittyNetUtility.cs" />
     <Compile Include="Views\frm_Connecting.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +126,18 @@
     </Compile>
     <Compile Include="Views\frm_MainView.Designer.cs">
       <DependentUpon>frm_MainView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frm_Move.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frm_Move.Designer.cs">
+      <DependentUpon>frm_Move.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frm_Route.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frm_Route.Designer.cs">
+      <DependentUpon>frm_Route.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\frm_Sensors.cs">
       <SubType>Form</SubType>
@@ -78,19 +154,21 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-
     <EmbeddedResource Include="Views\frm_connecting.resx">
       <DependentUpon>frm_Connecting.cs</DependentUpon>
     </EmbeddedResource>
-
     <EmbeddedResource Include="Views\frm_MainView.resx">
       <DependentUpon>frm_MainView.cs</DependentUpon>
     </EmbeddedResource>
-
+    <EmbeddedResource Include="Views\frm_Move.resx">
+      <DependentUpon>frm_Move.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frm_Route.resx">
+      <DependentUpon>frm_Route.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\frm_Sensors.resx">
       <DependentUpon>frm_Sensors.cs</DependentUpon>
     </EmbeddedResource>
-
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -104,9 +182,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -38,9 +38,10 @@
             // 
             // btn_cancel
             // 
-            this.btn_cancel.Location = new System.Drawing.Point(28, 112);
+            this.btn_cancel.Location = new System.Drawing.Point(14, 58);
+            this.btn_cancel.Margin = new System.Windows.Forms.Padding(2);
             this.btn_cancel.Name = "btn_cancel";
-            this.btn_cancel.Size = new System.Drawing.Size(107, 44);
+            this.btn_cancel.Size = new System.Drawing.Size(54, 23);
             this.btn_cancel.TabIndex = 0;
             this.btn_cancel.Text = "Cancel";
             this.btn_cancel.UseVisualStyleBackColor = true;
@@ -48,9 +49,10 @@
             // 
             // btn_connect
             // 
-            this.btn_connect.Location = new System.Drawing.Point(287, 112);
+            this.btn_connect.Location = new System.Drawing.Point(144, 58);
+            this.btn_connect.Margin = new System.Windows.Forms.Padding(2);
             this.btn_connect.Name = "btn_connect";
-            this.btn_connect.Size = new System.Drawing.Size(128, 44);
+            this.btn_connect.Size = new System.Drawing.Size(64, 23);
             this.btn_connect.TabIndex = 1;
             this.btn_connect.Text = "Connect";
             this.btn_connect.UseVisualStyleBackColor = true;
@@ -64,30 +66,33 @@
             // 
             // tbx_ipaddress
             // 
-            this.tbx_ipaddress.Location = new System.Drawing.Point(28, 65);
+            this.tbx_ipaddress.Location = new System.Drawing.Point(14, 34);
+            this.tbx_ipaddress.Margin = new System.Windows.Forms.Padding(2);
             this.tbx_ipaddress.Name = "tbx_ipaddress";
-            this.tbx_ipaddress.Size = new System.Drawing.Size(400, 31);
+            this.tbx_ipaddress.Size = new System.Drawing.Size(202, 20);
             this.tbx_ipaddress.TabIndex = 3;
             // 
             // lbl_address
             // 
             this.lbl_address.AutoSize = true;
-            this.lbl_address.Location = new System.Drawing.Point(23, 27);
+            this.lbl_address.Location = new System.Drawing.Point(12, 14);
+            this.lbl_address.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_address.Name = "lbl_address";
-            this.lbl_address.Size = new System.Drawing.Size(112, 25);
+            this.lbl_address.Size = new System.Drawing.Size(56, 13);
             this.lbl_address.TabIndex = 4;
             this.lbl_address.Text = "Ip address";
             // 
             // frm_Connecting
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(459, 196);
+            this.ClientSize = new System.Drawing.Size(230, 102);
             this.Controls.Add(this.lbl_address);
             this.Controls.Add(this.tbx_ipaddress);
             this.Controls.Add(this.btn_connect);
             this.Controls.Add(this.btn_cancel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "frm_Connecting";
             this.ShowIcon = false;

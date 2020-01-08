@@ -30,14 +30,18 @@
         {
             this.tc_main = new System.Windows.Forms.TabControl();
             this.tp_sensors = new System.Windows.Forms.TabPage();
+            this.tp_move = new System.Windows.Forms.TabPage();
             this.tp_linefollowing = new System.Windows.Forms.TabPage();
             this.tp_settings = new System.Windows.Forms.TabPage();
+            this.tp_map = new System.Windows.Forms.TabPage();
             this.tc_main.SuspendLayout();
             this.SuspendLayout();
             // 
             // tc_main
             // 
             this.tc_main.Controls.Add(this.tp_sensors);
+            this.tc_main.Controls.Add(this.tp_move);
+            this.tc_main.Controls.Add(this.tp_map);
             this.tc_main.Controls.Add(this.tp_linefollowing);
             this.tc_main.Controls.Add(this.tp_settings);
             this.tc_main.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -57,6 +61,15 @@
             this.tp_sensors.Text = "Sensors";
             this.tp_sensors.UseVisualStyleBackColor = true;
             // 
+            // tp_move
+            // 
+            this.tp_move.Location = new System.Drawing.Point(4, 22);
+            this.tp_move.Name = "tp_move";
+            this.tp_move.Size = new System.Drawing.Size(792, 424);
+            this.tp_move.TabIndex = 3;
+            this.tp_move.Text = "Move";
+            this.tp_move.UseVisualStyleBackColor = true;
+            // 
             // tp_linefollowing
             // 
             this.tp_linefollowing.Location = new System.Drawing.Point(4, 22);
@@ -75,6 +88,15 @@
             this.tp_settings.TabIndex = 2;
             this.tp_settings.Text = "Settings";
             this.tp_settings.UseVisualStyleBackColor = true;
+            // 
+            // tp_map
+            // 
+            this.tp_map.Location = new System.Drawing.Point(4, 22);
+            this.tp_map.Name = "tp_map";
+            this.tp_map.Size = new System.Drawing.Size(792, 424);
+            this.tp_map.TabIndex = 4;
+            this.tp_map.Text = "Map";
+            this.tp_map.UseVisualStyleBackColor = true;
             // 
             // frm_MainView
             // 
@@ -97,5 +119,7 @@
         private System.Windows.Forms.TabPage tp_sensors;
         private System.Windows.Forms.TabPage tp_linefollowing;
         private System.Windows.Forms.TabPage tp_settings;
+        private System.Windows.Forms.TabPage tp_move;
+        private System.Windows.Forms.TabPage tp_map;
     }
 }

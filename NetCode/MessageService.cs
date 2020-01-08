@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 
 namespace NetCode
 {
+    public delegate void TimeOut();
+
     public abstract class MessageService
     {
         //concurrent queue for incoming messages
@@ -18,27 +20,63 @@ namespace NetCode
         private ConcurrentQueue<Message> messageOutQueue;
         //connection we use
         private Connection connection;
+        //lock
+        private SemaphoreSlim semaLock;
+
+        //pingtime
+        private long pingTime;
+
+        public event TimeOut OnTimeOut;
 
         protected MessageService()
         {
             messageInQueue = new ConcurrentQueue<Message>();
             messageOutQueue = new ConcurrentQueue<Message>();
             connection = new Connection(this);
+            semaLock = new SemaphoreSlim(1, 1);
+            pingTime = 0;
         }
 
+
         //try connecting to address and port
-        public async Task TryConnect(string address, int port)
+        public async Task<bool> TryConnect(string address, int port)
         {
             //create ip address variable
             IPAddress ip;
 
             //try parsing it and create a object
             if (!IPAddress.TryParse(address, out ip))
-                //parsing failed throw exception
-                throw new Exception("Invalid ip address");
+                //return false
+                return false;
 
             //parsing succesfull check for connection
-            await connection.TryConnect(ip, port);
+            try
+            {
+                await connection.TryConnect(ip, port);
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        protected async Task Ping()
+        {
+            await semaLock.WaitAsync();
+            pingTime += 10;
+            semaLock.Release();
+        }
+
+        protected async Task<long> GetPingTime()
+        {
+            long pt = 0;
+            await semaLock.WaitAsync();
+            pt = pingTime;
+            semaLock.Release();
+
+            return pt;
         }
 
         //handle incoming message
@@ -92,8 +130,11 @@ namespace NetCode
             }
         }
 
-        public void Poll()
+        public async void Poll()
         {
+            if (await GetPingTime() > 2000)
+                OnTimeOut?.Invoke();
+
             while(messageInQueue.Count > 0)
             {
                 Message m;
