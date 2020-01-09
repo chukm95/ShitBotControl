@@ -47,6 +47,9 @@ namespace ShitBotControl.Controllers
                     case MessagesIn.MessageTypes.SENSORDATA:
                         OnSensorData((Msg_In_SensorData)msg);
                         break;
+                    case MessagesIn.MessageTypes.COMPLETE:
+                        OnComplete();
+                        break;
                 }
             }
         }
@@ -71,7 +74,12 @@ namespace ShitBotControl.Controllers
 
         }
 
-        protected void Stop()
+        public void Start()
+        {
+            timer.Start();
+        }
+
+        public void Stop()
         {
             timer.Stop();
         }

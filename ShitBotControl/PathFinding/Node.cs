@@ -29,6 +29,9 @@ namespace ShitBotControl.PathFinding
         //is node enabled
         public bool isEnabled;
 
+        public int x, y;
+        public Node previousNode;
+
         //constructor for a isolated node
         public Node(bool isEnabled)
         {
@@ -58,37 +61,57 @@ namespace ShitBotControl.PathFinding
                 //if we have node left
                 if (n_left != null)
                 {
-                    //wake node up
-                    n_left.currentState = State.WAKING_UP;
-                    //set node weight
-                    n_left.weight = weight + 1;
+                    if (n_left.currentState == State.DORMANT)
+                    {
+                        //wake node up
+                        n_left.currentState = State.WAKING_UP;
+                        //set node weight
+                        n_left.weight = weight + 1;
+                        //set us as the previous Node
+                        n_left.previousNode = this;
+                    }
                 }
 
                 //if we have node down
                 if (n_down != null)
                 {
-                    //wake node up
-                    n_down.currentState = State.WAKING_UP;
-                    //set node weight
-                    n_down.weight = weight + 1;
+                    if (n_down.currentState == State.DORMANT)
+                    {
+                        //wake node up
+                        n_down.currentState = State.WAKING_UP;
+                        //set node weight
+                        n_down.weight = weight + 1;
+                        //set us as the previous Node
+                        n_down.previousNode = this;
+                    }
                 }
 
                 //if we have node right
                 if (n_right != null)
                 {
-                    //wake node right
-                    n_right.currentState = State.WAKING_UP;
-                    //set node weight
-                    n_right.weight = weight + 1;
+                    if (n_right.currentState == State.DORMANT)
+                    {
+                        //wake node right
+                        n_right.currentState = State.WAKING_UP;
+                        //set node weight
+                        n_right.weight = weight + 1;
+                        //set us as the previous Node
+                        n_right.previousNode = this;
+                    }
                 }
 
                 //if we have a node up
                 if (n_up != null)
                 {
-                    //wake node up
-                    n_up.currentState = State.WAKING_UP;
-                    //set node weight
-                    n_up.weight = weight + 1;
+                    if (n_up.currentState == State.DORMANT)
+                    {
+                        //wake node up
+                        n_up.currentState = State.WAKING_UP;
+                        //set node weight
+                        n_up.weight = weight + 1;
+                        //set us as the previous Node
+                        n_up.previousNode = this;
+                    }
                 }
             }
         }

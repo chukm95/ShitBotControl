@@ -15,7 +15,7 @@ namespace ShitBotControl.Views
     public partial class frm_Sensors : Form
     {
         
-        private cnt_Sensors controller;
+        public cnt_Sensors controller;
         private int ultrasoon;
         private bool lf_Left, lf_Mid, lf_Right;
         private int motorLeft, motorRight;
@@ -30,6 +30,7 @@ namespace ShitBotControl.Views
         private void Frm_Sensors_Load(object sender, EventArgs e)
         {
             controller = new cnt_Sensors(this);
+            Console.WriteLine("sensors loaded!");
         }
         
         private void Pbx_rendersurface_Resize(object sender, EventArgs e)

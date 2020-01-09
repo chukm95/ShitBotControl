@@ -32,7 +32,7 @@ namespace ShitBotControl.Models
         private Intersection[,] intersections;
 
         public Map(string name, int width, int height)
-        {
+        {           
             this.Name = name;
             this.Width = width;
             this.Height = height;
@@ -47,10 +47,10 @@ namespace ShitBotControl.Models
                     intersections[x, y].x = x;
                     intersections[x, y].y = y;
                     intersections[x, y].isEnabled = true;
-                    intersections[x, y].isConnectedLeft = x != 0;
-                    intersections[x, y].isConnectedRight = x < width;
-                    intersections[x, y].isConnectedUp = y != 0;
-                    intersections[x, y].isConnectedDown = y < height;
+                    intersections[x, y].isConnectedLeft = (x != 0);
+                    intersections[x, y].isConnectedRight = (x < width - 1);
+                    intersections[x, y].isConnectedUp = (y != 0);
+                    intersections[x, y].isConnectedDown = (y < height - 1);
 
                 }
             }

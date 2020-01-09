@@ -29,11 +29,9 @@
         private void InitializeComponent()
         {
             this.tc_main = new System.Windows.Forms.TabControl();
-            this.tp_sensors = new System.Windows.Forms.TabPage();
             this.tp_move = new System.Windows.Forms.TabPage();
-            this.tp_linefollowing = new System.Windows.Forms.TabPage();
-            this.tp_settings = new System.Windows.Forms.TabPage();
             this.tp_map = new System.Windows.Forms.TabPage();
+            this.tp_sensors = new System.Windows.Forms.TabPage();
             this.tc_main.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,24 +40,13 @@
             this.tc_main.Controls.Add(this.tp_sensors);
             this.tc_main.Controls.Add(this.tp_move);
             this.tc_main.Controls.Add(this.tp_map);
-            this.tc_main.Controls.Add(this.tp_linefollowing);
-            this.tc_main.Controls.Add(this.tp_settings);
             this.tc_main.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tc_main.Location = new System.Drawing.Point(0, 0);
             this.tc_main.Name = "tc_main";
             this.tc_main.SelectedIndex = 0;
             this.tc_main.Size = new System.Drawing.Size(800, 450);
             this.tc_main.TabIndex = 0;
-            // 
-            // tp_sensors
-            // 
-            this.tp_sensors.Location = new System.Drawing.Point(4, 22);
-            this.tp_sensors.Name = "tp_sensors";
-            this.tp_sensors.Padding = new System.Windows.Forms.Padding(3);
-            this.tp_sensors.Size = new System.Drawing.Size(792, 424);
-            this.tp_sensors.TabIndex = 0;
-            this.tp_sensors.Text = "Sensors";
-            this.tp_sensors.UseVisualStyleBackColor = true;
+            this.tc_main.SelectedIndexChanged += new System.EventHandler(this.Tc_main_SelectedIndexChanged);
             // 
             // tp_move
             // 
@@ -70,25 +57,6 @@
             this.tp_move.Text = "Move";
             this.tp_move.UseVisualStyleBackColor = true;
             // 
-            // tp_linefollowing
-            // 
-            this.tp_linefollowing.Location = new System.Drawing.Point(4, 22);
-            this.tp_linefollowing.Name = "tp_linefollowing";
-            this.tp_linefollowing.Padding = new System.Windows.Forms.Padding(3);
-            this.tp_linefollowing.Size = new System.Drawing.Size(792, 424);
-            this.tp_linefollowing.TabIndex = 1;
-            this.tp_linefollowing.Text = "LineFollowing";
-            this.tp_linefollowing.UseVisualStyleBackColor = true;
-            // 
-            // tp_settings
-            // 
-            this.tp_settings.Location = new System.Drawing.Point(4, 22);
-            this.tp_settings.Name = "tp_settings";
-            this.tp_settings.Size = new System.Drawing.Size(792, 424);
-            this.tp_settings.TabIndex = 2;
-            this.tp_settings.Text = "Settings";
-            this.tp_settings.UseVisualStyleBackColor = true;
-            // 
             // tp_map
             // 
             this.tp_map.Location = new System.Drawing.Point(4, 22);
@@ -97,6 +65,16 @@
             this.tp_map.TabIndex = 4;
             this.tp_map.Text = "Map";
             this.tp_map.UseVisualStyleBackColor = true;
+            // 
+            // tp_sensors
+            // 
+            this.tp_sensors.Location = new System.Drawing.Point(4, 22);
+            this.tp_sensors.Name = "tp_sensors";
+            this.tp_sensors.Padding = new System.Windows.Forms.Padding(3);
+            this.tp_sensors.Size = new System.Drawing.Size(792, 424);
+            this.tp_sensors.TabIndex = 0;
+            this.tp_sensors.Text = "Sensors";
+            this.tp_sensors.UseVisualStyleBackColor = true;
             // 
             // frm_MainView
             // 
@@ -116,10 +94,8 @@
         #endregion
 
         private System.Windows.Forms.TabControl tc_main;
-        private System.Windows.Forms.TabPage tp_sensors;
-        private System.Windows.Forms.TabPage tp_linefollowing;
-        private System.Windows.Forms.TabPage tp_settings;
         private System.Windows.Forms.TabPage tp_move;
         private System.Windows.Forms.TabPage tp_map;
+        private System.Windows.Forms.TabPage tp_sensors;
     }
 }

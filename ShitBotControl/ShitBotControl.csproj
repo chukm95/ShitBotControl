@@ -112,6 +112,7 @@
     <Compile Include="ShittyNetCode\Messages\Msg_Out_Right.cs" />
     <Compile Include="ShittyNetCode\Messages\Msg_Out_Left.cs" />
     <Compile Include="ShittyNetCode\Messages\Msg_Out_Forward.cs" />
+    <Compile Include="ShittyNetCode\Messages\Msg_Out_Route.cs" />
     <Compile Include="ShittyNetCode\Messages\Msg_Out_SensorDataRequest.cs" />
     <Compile Include="ShittyNetCode\ShittyNetClient.cs" />
     <Compile Include="ShittyNetCode\ShittyNetUtility.cs" />

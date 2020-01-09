@@ -47,5 +47,29 @@ namespace ShitBotControl.Views
             tp_map.Controls.Add(frm_Map);
             frm_Map.Show();
         }
+
+        private void Tc_main_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Console.WriteLine("index " + tc_main.SelectedTab.Name);
+            switch (tc_main.SelectedTab.Name.ToString())
+            {
+                case "tp_sensors":
+                    frm_Move?.controller?.Stop();
+                    frm_Map?.controller?.Stop();
+                    frm_Sensors?.controller?.Start();
+                    break;
+                case "tp_map":
+                    frm_Move?.controller?.Stop();
+                    frm_Map?.controller?.Start();
+                    frm_Sensors?.controller?.Stop();
+                    break;
+                case "tp_move":
+                    frm_Move?.controller?.Start();
+                    frm_Map?.controller?.Stop();
+                    frm_Sensors?.controller?.Stop();
+                    break;
+
+            }
+        }
     }
 }

@@ -13,7 +13,7 @@ namespace ShitBotControl.Views
 {
     public partial class frm_Move : Form
     {
-        private cnt_Move controller;
+        public cnt_Move controller;
 
         public frm_Move()
         {
@@ -48,6 +48,7 @@ namespace ShitBotControl.Views
         private void Frm_Move_Load(object sender, EventArgs e)
         {
             controller = new cnt_Move(this);
+            Console.WriteLine("move loaded");
         }
     }
 }
